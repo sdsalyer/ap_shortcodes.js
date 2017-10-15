@@ -19,7 +19,7 @@ See **example.html** for ... examples.
 ```html
     <script src="https://cdn.rawgit.com/sdsalyer/ap_shortcodes.js/master/js/shortcode.js"></script>
     <script src="https://cdn.rawgit.com/sdsalyer/ap_shortcodes.js/master/js/ap_shortcodes.js"></script>
-    <link rel="stylesheet" href="https://cdn.rawgit.com/sdsalyer/ap_shortcodes.js/master/css/ap_shortcodes.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/sdsalyer/ap_shortcodes.js/master/css/ap_shortcodes.css"></link>
 ```
 
 2. (Optional) Alter **ap_shortcodes.js** to add/edit shortcodes. Alter **ap_shortcodes.css** to add/edit the associated styles.
