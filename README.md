@@ -63,7 +63,7 @@ Shortcode.js should work in any browser that supports `Function.prototype.bind` 
 
 #### Contributing
 
-Create a topic branch and submit a pull request.
+Create a topic branch and submit a pull request to the develop branch. I tend to follow the [nvie method here](http://nvie.com/posts/a-successful-git-branching-model/).
 If there is an issue in shortcode.js, consider [contributing there](https://github.com/nicinabox/shortcode.js/blob/master/CONTRIBUTING.md).
 
 #### License
