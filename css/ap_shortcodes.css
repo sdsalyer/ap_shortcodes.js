@@ -6,12 +6,12 @@
  */
 
 .ap_dice {
-	font-size: 1.1em;
 	font-family: monospace; 
 	background-color: darkorange; 
 }
 
 .ap_dice_block {
+	font-size: 1.1em;
 	display: block;
 	padding: 1em;
 }
@@ -50,36 +50,41 @@
 	color: white;
 }
 
-.ap_story {
+.ap_story, .ap_story_title {
 	text-indent: .8em;
 	font-size: 1.2em; 
 	font-family: serif; 
 	background-color: #f5deb3; 
 	border: 1px solid brown; 
 	padding: 1em;
-}
-
-.ap_story p:first-line {
-   text-indent: -.8em;
-   maring: .8em;
-   font-variant: small-caps;
-   font-size: 1.1em; 
-}
-
-.ap_story p:first-letter {
-   float: left;
-   font-size: 2.5em;
-   font-weight: bold;
-   font-family: "Monotype Corsiva", "Apple Chancery", fantasy;
-   margin: 5px 5px 5px 0; 
-}
-
-.ap_story p {
 	line-height: 125%;
+}
+
+.ap_story_title {
+	text-indent: initial;
+	font-size: 1.8em;
+	font-weight: bold;
+	padding: .5em;
+	font-family: sans-serif;
+	border-bottom: initial;
+	background-color: brown;
+	color: #f5deb3;
 }
 
 .ap_story br {
 	content: "";
 	display: block;
-    height: .5em;
+    height: .8em;
+}
+
+.fancy:first-line {
+   font-variant: small-caps;
+   font-size: 1.2em; 
+}
+
+.fancy:first-letter {
+   float: left;
+   font-size: 2.5em;
+   font-family: "Monotype Corsiva", "Apple Chancery", fantasy;
+   margin: .25em .5em .5em 0; 
 }
