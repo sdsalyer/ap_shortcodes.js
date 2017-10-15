@@ -2,7 +2,7 @@
 ## Actual Play Shortcodes for shortcode.js
 _By Spencer @ [WispsOfTime.com](http://wispsoftime.com)_
 
-A drop-in JavaScript solution for formatting your RPG actual-play reports. Add 3 lines to your website's &lt;head%gt; and you're good to go.
+A drop-in JavaScript solution for formatting your RPG actual-play reports. Add 3 lines to your website's `<head>` and you're good to go.
 
 * Wrap your narrative bits in **[story]** tags
 * Set die rolls apart, inline or block, with the **[dice]** tag.
@@ -14,11 +14,13 @@ See **example.html** for ... examples.
 
 ### Usage
 
-1. Include references to shortcode.js, ap_shortcodes.js, and ap_shortcodes.css in your page's &lt;head&gt; tag.
+1. Include references to shortcode.js, ap_shortcodes.js, and ap_shortcodes.css in your page's `<head>` tag.
 
+```html
     <script src="https://cdn.rawgit.com/sdsalyer/ap_shortcodes.js/master/js/shortcode.js"></script>
     <script src="https://cdn.rawgit.com/sdsalyer/ap_shortcodes.js/master/js/ap_shortcodes.js"></script>
     <link rel="stylesheet" href="https://cdn.rawgit.com/sdsalyer/ap_shortcodes.js/master/css/ap_shortcodes.css">
+```
 
 2. (Optional) Alter **ap_shortcodes.js** to add/edit shortcodes. Alter **ap_shortcodes.css** to add/edit the associated styles.
 3. Use the shortcodes in your actual play report, then ooh and ahh at the results!
