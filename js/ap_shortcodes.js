@@ -13,18 +13,59 @@
 // all the HTML (DOM) has been read.
 document.addEventListener("DOMContentLoaded", function(event) {
 
-	// Here is where we create our shortcodes, parsing only 
-	// those entries under the #Blog1 element.
-	new Shortcode(document.getElementById("Blog1"), {
+	// Here is where we create our shortcodes, 
+	// We can pass in any element to parse it alone: 
+	//     new Shortcode(document.getElementById("Blog1"), {
+	// But, we'll use the body element by default
+	new Shortcode(document.body, {
 		
 		// Our [story] shortcode
 		story: function(done) {
-			var $story = "<blockquote class=\"ap_story\">" + this.contents + "</blockquote>";
+			if (this.contents === undefined)
+			{
+				console.error("Tag error: " + this.name + " > " + this.tag);
+				return;
+			}
+
+			var $story = this.contents;
+
+			// We'll add some storybook flair to narrative elements
+			var $style = "";
+			var $title = "";
+			if(typeof this.options !== "undefined")
+			{
+				if(typeof this.options.style !== "undefined")
+				{
+					if(this.options.style.toLowerCase() === "fancy")
+					{
+						$style = " fancy";
+					}
+				}
+
+				if(typeof this.options.title !== "undefined")
+				{
+					var $tmp = this.options.title.trim();
+					if($tmp.length > 0)
+					{
+						$title = $tmp;
+						$title = "<header class=\"ap_story_title\">" + $title + "</header>";
+					}
+				}
+			}
+
+			$story = "<section class=\"ap_story_wrapper\">" + $title + "<div class=\"ap_story" + $style + "\">" + $story + "</div>";
+
 			return $story;
 		},
 
 		// Our [dice] shortcode
 		dice: function(done) {
+			if (this.contents === undefined)
+			{
+				console.error("Tag error: " + this.name + " > " + this.tag);
+				return;
+			}
+
 			var $dice = this.contents;
 			
 			// We'll handle the style attribute, accepting 
@@ -41,13 +82,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				}
 			}
 			
-			$dice = "<span class=\"ap_dice ap_dice_" + $style + "\">" + $dice + "</span>";
+			$dice = "<mark class=\"ap_dice ap_dice_" + $style + "\">" + $dice + "</mark>";
 
 			return $dice;
 		},
 
 		// Our [spoiler] shortcode
 		spoiler: function(done) {
+			if (this.contents === undefined)
+			{
+				console.error("Tag error: " + this.name + " > " + this.tag);
+				return;
+			}
+
 			var $spoiler = "";
 			
 			// This will display the given title or a default message
@@ -64,10 +111,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				}
 			}
 			
-			$spoiler += "<div class=\"ap_spoiler_wrapper\" onclick=\"toggleSpoiler(this)\">";
+			$spoiler += "<aside class=\"ap_spoiler_wrapper\" onclick=\"toggleSpoiler(this)\">";
 			$spoiler += "<div class=\"ap_spoiler_title ap_spoiler_expand\">" + $title + "</div>";
 			$spoiler += "<div class=\"ap_spoiler_contents\">" + this.contents + "</div>";
-			$spoiler += "</div>";
+			$spoiler += "</aside>";
 
 			return $spoiler;
 		}
@@ -75,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 });
 
-// This function toggles the display property of the spoiler shortcodes
+// This function toggles the spoiler shortcodes open/closed
 function toggleSpoiler($el) {
 	var $action = ($el.childNodes[0].classList[1] === 'ap_spoiler_expand' ? 'expand' : 'collapse');
 	$el.childNodes[1].style.display = ($action === "expand" ? 'initial' : 'none');
