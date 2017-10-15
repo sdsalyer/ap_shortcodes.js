@@ -1,0 +1,84 @@
+/**
+ * Styles for: Actual Play Shortcodes for shortcode.js
+ *
+ * @author Spencer @ WispsOfTime.com
+ * @date 2017-10-12
+ */
+
+.ap_dice {
+	font-weight: bold; 
+	font-family: monospace; 
+	background-color: darkorange; 
+}
+
+.ap_dice_block {
+	display: block;
+	padding: 1em;
+}
+
+.ap_dice_inline {
+	padding: 0 .2em 0 .2em;
+}
+
+.ap_spoiler_wrapper {
+	border: 1px solid blue; 
+	background-color: skyblue; 
+	padding: .5em; 
+	cursor: pointer;
+}
+
+.ap_spoiler_title {
+	font-size: 1.2em;
+}
+
+.ap_spoiler_expand::before {
+	content: "+";
+	padding: 0 .25em 0 .25em;
+	border: 1px solid;
+	margin-right: .5em;
+}
+
+.ap_spoiler_collapse::before {
+	content: "\2013";
+	padding: 0 .25em 0 .25em;
+	border: 1px solid;
+	margin-right: .5em;
+}
+
+.ap_spoiler_contents {
+	display: none; 
+	color: white;
+}
+
+.ap_story {
+	text-indent: .5em;
+	font-size: 1.1em; 
+	font-family: serif; 
+	background-color: #f5deb3; 
+	border: 1px solid brown; 
+	padding: 1em;
+}
+
+.ap_story p:first-line {
+   text-indent: initial;
+   font-variant: small-caps;
+   font-size: 1.1em; 
+}
+
+.ap_story p:first-letter {
+   float: left;
+   font-size: 2.5em;
+   font-weight: bold;
+   font-family: "Monotype Corsiva", "Apple Chancery", fantasy;
+   margin: 5px 5px 5px 0; 
+}
+
+.ap_story p {
+	line-height: 125%;
+}
+
+.ap_story br {
+	content: "";
+	display: block;
+    height: .5em;
+}

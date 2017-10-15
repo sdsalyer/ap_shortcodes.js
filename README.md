@@ -1,25 +1,51 @@
-# [shortcode.js](https://github.com/nicinabox/shortcode.js)
+# [ap_shortcodes.js](https://github.com/sdsalyer/ap_shortcodes.js)
+## Actual Play Shortcodes for shortcode.js
+_By Spencer @ [WispsOfTime.com](http://wispsoftime.com)_
 
-Replace [Wordpress-style shortcodes](http://codex.wordpress.org/Shortcode) with anything. No dependencies required.
+A drop-in JavaScript solution for formatting your RPG actual-play reports. Add 2 lines to your website's <head> and you're good to go.
 
-## Usage
+* Wrap your narrative bits in [story] tags
+* Set die rolls apart, inline or block, with the [dice] tag.
+* Hide mechanics and more behind expanding [spoiler] tags.
 
-`Shortcode` accepts 2 arguments: an element, and an object of tags to match.
+A fork of shortcode.js, which does all the heavy lifting, ap_shortcodes.js is simply a definition and styles for tags to meet the most common actual play formatting needs.
 
-Each tag method returns a string to replace the original tag (in the DOM) and accepts an (optional) asynchronous callback. `this` is bound to the match object.
+See *example.html* for ... examples.
 
-```javascript
-/* Replaces [hello text="Hello world"] in `body` with "Hello world" */
-new Shortcode(document.querySelector('body'), {
-  hello: function() {
-    return this.options.text;
-  }
-});
-```
+###What is an Actual Play and Why Should I Care?
 
-Tip: Because shortcode replaces an element's html, you will lose existing event bindings inside that element. Use delegated bindings where possible and call shortcode at the start of your code.
+An "actual play" report, or AP, is a blog or forum post sharing the details of a pen and paper role-playing adventure for others to enjoy online. These posts typically involve the expected blog-style setup and commentary amidst a mixture of narration and game play elements. It's not always easy or straightforward for blog authors to distinctly style (or obfuscate, if you're trying to avoid spoilers) these separate elements to better distinguish them for readability, aesthetics, or even dramatic effect.
 
-## Features
+If you post your actual plays online and are permitted to add JavaScript to your site, ap_shortcodes.js can simplify this task for you. It supplies the styles to distinguish the separate portions of your actual plays, packaged in BBCode / WordPress-style shortcodes, convyed by JavaScript.
+
+###What are Shortcodes and Why Should I Care?
+
+The term "shortcode" is attributed to WordPress, but if you've ever posted on an internet forum or message board then you've probably seen or used BBCode -- those tags in square brackets that allow you to format your post, insert a link, or create an enormous chain of animated gif emoticons to troll your pals.
+
+Same idea here, but we're focused on a drop-in solution for most any blog or website which is tailor-made to actual play posts.
+
+###Why JavaScript?
+
+ap_shortcodes.js uses common client-side JavaScript to read your post and replace the shortcode tags, rather than server-side scripts that you may not have the expertise or permissions to implement, depending on your blogging platform or web host.
+
+JavaScript has its drawbacks -- it runs every time the page loads, and could potentially be slow to parse your entire post, not to mention your site users could simply have it turned off entirely (in which case, the tags would be visible in your post and the styling would not be applied)!
+
+That being said, very few users browse the web without JavaScript enabled and most modern browsers are extremely capable and fast in interpreting and executing JavaScript. Consider these things
+
+
+### Usage
+
+Include references to shortcode.js, ap_shortcodes.js, and ap_shortcodes.css in your page's <head> tag.
+
+Alter ap_shortcodes.js to add/edit shortcodes.
+
+Alter ap_shortcodes.css to add/edit the associated styles.
+
+### Features
+
+
+
+*Inherited shortcode.js Features:*
 
 * Supports multiple tag instances
 * Supports single and start-end tags
@@ -28,63 +54,19 @@ Tip: Because shortcode replaces an element's html, you will lose existing event 
 * Supports DOM or jQuery selectors
 * Includes jQuery plugin definition
 * Ignores tags inside `pre` and `code`
-* Tested with Jasmine
 
-## Supported browsers
+#### Supported browsers
 
 Shortcode.js should work in any browser that supports `Function.prototype.bind` (Sorry IE7 & 8). If you need to support <IE9, try the [polyfill published in MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind#Compatibility).
 
-## Using async
-
-Sometimes you need to do asynchronous work. Don't return anything from the shortcode method. Instead, call `done` with your return value to update the DOM.
-
-```javascript
-new Shortcode(document.querySelector('body'), {
-  hello: function(done) {
-    var self = this;
-
-    /* setTimeout is used here to simulate an async event */
-    setTimeout(function() {
-      done(self.options.text);
-    }, 1000);
-  }
-});
-```
-
-## Start and end tags
-
-Shortcode.js supports tags like `[note]This is a note[/note]`. The content between tags will be availble in your callback under `this.contents`.
-
-```javascript
-new Shortcode(document.querySelector('body'), {
-  note: function(done) {
-    return this.contents;
-  }
-});
-```
-
-## jQuery
-
-While shortcode.js doesn't rely on jQuery, you may find it convenient to use. Shortcode can accept a jQuery object or a DOM object as the first argument.
-
-Alternatively, a jQuery plugin wrapper is supplied.
-
-```javascript
-$('body').shortcode({
-  hello: function() {
-    return this.options.text;
-  }
-});
-```
-
-## Releases
+#### Releases
 
 See [Releases](https://github.com/nicinabox/shortcode.js/releases) for current version and release notes.
 
-## Contributing and dev setup
+#### Contributing
 
-See `CONTRIBUTING.md`
+Create a topic branch and submit a pull request.
+If there is an issue in shortcode.js, consider [contributing there](https://github.com/nicinabox/shortcode.js/blob/master/CONTRIBUTING.md)
 
-## License
-
-MIT (c) 2014 Nic Aitch
+#### License
+Licensed under the [MIT License](https://opensource.org/licenses/MIT), inherited from [shortcode.js](https://github.com/nicinabox/shortcode.js
