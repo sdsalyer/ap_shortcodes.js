@@ -6,7 +6,7 @@
  */
 
 .ap_dice {
-	font-weight: bold; 
+	font-size: 1.1em;
 	font-family: monospace; 
 	background-color: darkorange; 
 }
@@ -51,8 +51,8 @@
 }
 
 .ap_story {
-	text-indent: .5em;
-	font-size: 1.1em; 
+	text-indent: .8em;
+	font-size: 1.2em; 
 	font-family: serif; 
 	background-color: #f5deb3; 
 	border: 1px solid brown; 
@@ -60,7 +60,8 @@
 }
 
 .ap_story p:first-line {
-   text-indent: initial;
+   text-indent: -.8em;
+   maring: .8em;
    font-variant: small-caps;
    font-size: 1.1em; 
 }
